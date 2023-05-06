@@ -13,8 +13,8 @@
 <meta property="og:title" content="Debugging in Go" />
 <meta name="author" content="Kayla Webb" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated." />
-<meta property="og:description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated." />
+<meta name="description" content="TODO" />
+<meta property="og:description" content="TODO" />
 <link rel="canonical" href="http://localhost:4000/debugging-in-go" />
 <meta property="og:url" content="http://localhost:4000/debugging-in-go" />
 <meta property="og:site_name" content="Kayla Webb" />
@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Debugging in Go" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kayla Webb"},"dateModified":"2023-05-06T00:00:00-04:00","datePublished":"2023-05-06T00:00:00-04:00","description":"You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.","headline":"Debugging in Go","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/debugging-in-go"},"url":"http://localhost:4000/debugging-in-go"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Kayla Webb"},"dateModified":"2023-05-06T00:00:00-04:00","datePublished":"2023-05-06T00:00:00-04:00","description":"TODO","headline":"Debugging in Go","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/debugging-in-go"},"url":"http://localhost:4000/debugging-in-go"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -60,17 +60,90 @@
 
 <body class="font-sans mx-auto max-w-prose">
   <div class="pt-12 pb-4">
-    <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+    
+  <nav class="flex flex-wrap items-center justify-center px-2 mb-6">
+  <div class="container px-4 mx-auto flex flex-wrap items-center justify-center">
+      <div class="w-full relative flex justify-center">
+          <button type="button" onclick="toggleNavbar('navbar')"
+              class="rounded-md inline-flex items-center justify-center text-gray-500 md:hidden"
+              aria-expanded="false">
+              <span class="sr-only">Open menu</span>
+              <!-- Heroicon name: outline/menu -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+          </button>
+      </div>
 
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Debugging in Go</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="2023-05-06T00:00:00-04:00" itemprop="datePublished">May 6, 2023
-      </time></p>
-  </header>
+      <div class="flex hidden md:block" id="navbar">
+          <div class="flex flex-col md:flex-row mr-auto w-full">
+               <!-- don't show Home in menu for Homepage -->
+              <a class="text-sm text-gray-500 hover:text-gray-900 px-3 py-2 lg:py-1 mx-auto uppercase"
+                  href="/">
+                  Home
+              </a>
+              
 
-  <div class="post-content e-content" itemprop="articleBody">
-    <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+              <!-- dynamic menu based on navigation info in _config.yml -->
+              
+                   <!-- don't show current page in menu -->
+                  <a class="text-sm text-gray-500 hover:text-gray-900 px-3 py-2 lg:py-1 mx-auto uppercase"
+                      href="/about">
+                      About
+                  </a>
+                  
+              
+                   <!-- don't show current page in menu -->
+                  <a class="text-sm text-gray-500 hover:text-gray-900 px-3 py-2 lg:py-1 mx-auto uppercase"
+                      href="/projects">
+                      Projects
+                  </a>
+                  
+              
+                   <!-- don't show current page in menu -->
+                  <a class="text-sm text-gray-500 hover:text-gray-900 px-3 py-2 lg:py-1 mx-auto uppercase"
+                      href="/blog">
+                      Blog
+                  </a>
+                  
+              
+                   <!-- don't show current page in menu -->
+                  <a class="text-sm text-gray-500 hover:text-gray-900 px-3 py-2 lg:py-1 mx-auto uppercase"
+                      href="/books">
+                      Reading List
+                  </a>
+                  
+              
+          </div>
+      </div>
+  </div>
+</nav>
+
+
+<div class="px-4 pt-4 prose prose-indigo">
+  <h1 class="text-center mt-6 mb-6">Debugging in Go</h1>
+  <div class="text-center">
+    
+      <i class="text-xs fas fa-tags"></i>
+    
+      <div class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+        <a class="!no-underline" href="/tag#debugging">debugging</a>
+      </div>
+    
+      <div class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+        <a class="!no-underline" href="/tag#golang">golang</a>
+      </div>
+    
+      <div class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+        <a class="!no-underline" href="/tag#vscode">vscode</a>
+      </div>
+    
+    
+  </div>
+  <p>TODO</p>
+
+<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
 
 <p>Jekyll requires blog post files to be named according to the following format:</p>
 
@@ -89,9 +162,35 @@
 <p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
 
 
-  </div><a class="u-url" href="/debugging-in-go" hidden></a>
-</article>
+</div>
 
+<footer class="relative px-4 pt-4 pb-4">
+  
+  <!-- divider -->
+  <div class="relative my-8">
+    <div class="absolute inset-0 flex items-center" aria-hidden="true">
+      <div class="w-full border-t border-gray-200"></div>
+    </div>
+    <div class="relative flex justify-center ">
+      <span class="bg-white px-2 text-gray-200">
+        <i class="text-xs far fa-square"></i>
+      </span>
+    </div>
+  </div>
+
+  <!-- footer msg -->
+  <div class="flex flex-wrap items-center justify-center">
+    <div class="text-sm text-gray-300">
+      © <span id="get-current-year"></span>
+      
+      <a href="" class="!no-underline">
+        Lanita Technology Solutions
+      </a>
+      
+    </div>
+  </div>
+  </div>
+</footer>
   </div>
 </body>
 
