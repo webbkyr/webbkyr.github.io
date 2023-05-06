@@ -1,0 +1,59 @@
+title: Kayla Webb
+description: Software Engineer @ Clearbit
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://webbkyr.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+
+theme-color: indigo
+author: Kayla Webb
+author-bio: Software Engineer @ Clearbit
+author-image: IMG_8141.jpg
+home-page-quote: To overcome our greatest fears, we have to confront them, like a child lifting the covers, grabbing a flashlight, and peering under the bed to make sure that the boogieman isn’t there after all. Or maybe he is. But at least now you can see him fully. Knowing what you are up against, you can brace yourself, then gather the energy for the fight. — Bozoma Saint John
+home-page-quote-source: https://www.penguinrandomhouse.com/books/688798/the-urgent-life-by-bozoma-saint-john/
+
+show-nav-menu: true
+nav-menu:
+  - text: About
+    permalink: about
+  - text: Projects
+    permalink: projects
+  - text: Blog
+    permalink: blog
+  - text: Reading List
+    permalink: books
+
+twitter: false
+facebook: false
+instagram: false
+github: https://github.com/webbkyr
+linkedin: https://www.linkedin.com/in/kaylarwebb
+medium: false
+email: kayla@hey.com
+footer-msg: Lanita Technology Solutions
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+kramdown:
+  typographic_symbols:
+      ndash: —
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
