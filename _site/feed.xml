@@ -1,19 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-06T19:48:40-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kayla Webb</title><subtitle>Software Engineer @ Clearbit</subtitle><author><name>Kayla R. Webb</name></author><entry><title type="html">Debugging in Go</title><link href="http://localhost:4000/debugging-in-go" rel="alternate" type="text/html" title="Debugging in Go" /><published>2023-05-06T00:00:00-04:00</published><updated>2023-05-06T00:00:00-04:00</updated><id>http://localhost:4000/debugging-in-go</id><content type="html" xml:base="http://localhost:4000/debugging-in-go"><![CDATA[<p>TODO</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-07T22:13:38-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Kayla Webb</title><subtitle>Software Engineer @ Clearbit</subtitle><author><name>Kayla R. Webb</name></author><entry><title type="html">Quick Tip - Debugging Go in VSCode</title><link href="http://localhost:4000/debugging-in-go" rel="alternate" type="text/html" title="Quick Tip - Debugging Go in VSCode" /><published>2023-05-06T00:00:00-04:00</published><updated>2023-05-06T00:00:00-04:00</updated><id>http://localhost:4000/debugging-in-go</id><content type="html" xml:base="http://localhost:4000/debugging-in-go"><![CDATA[<p>I’ve recently started writing services in Golang. Using the VSCode debugger has helped me learned (saved me a lot of time!). Lets quickly run through how to set it up.</p>
 
-<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+<p>Under the <code class="language-plaintext highlighter-rouge">Run And Debug</code> tab in VSCode, click <code class="language-plaintext highlighter-rouge">create a launch.json file</code>.</p>
 
-<p>Jekyll requires blog post files to be named according to the following format:</p>
+<p>In this file is where we’ll add configuration for our Go program. This is an example configuration for a simple program called <code class="language-plaintext highlighter-rouge">greetings</code>. The folder structure looks like this:</p>
 
-<p><code class="language-plaintext highlighter-rouge">YEAR-MONTH-DAY-title.MARKUP</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/greetings
+  go.mod
+  go.sum
+  greetings_test.go
+  greetings.go
+  .env.development
+  
+</code></pre></div></div>
+<p>And the <code class="language-plaintext highlighter-rouge">launch.json</code>:</p>
 
-<p>Where <code class="language-plaintext highlighter-rouge">YEAR</code> is a four-digit number, <code class="language-plaintext highlighter-rouge">MONTH</code> and <code class="language-plaintext highlighter-rouge">DAY</code> are both two-digit numbers, and <code class="language-plaintext highlighter-rouge">MARKUP</code> is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.0"</span><span class="w">
+  </span><span class="nl">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"type"</span><span class="err">:</span><span class="w"> </span><span class="s2">"go"</span><span class="w">
+    </span><span class="s2">"request"</span><span class="err">:</span><span class="w"> </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="err">:</span><span class="w"> </span><span class="s2">"Greetings program"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">can</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">whatever</span><span class="w"> </span><span class="err">you</span><span class="w"> </span><span class="err">want</span><span class="w">
+    </span><span class="s2">"program"</span><span class="err">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"envFile"</span><span class="err">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/.env.development"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">optional</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<p>And that’s it! To test it out, set a breakpoint and run your tests(s)</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+<p>greetings.go</p>
 
-<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>]]></content><author><name>Kayla R. Webb</name></author><category term="debugging" /><category term="golang" /><category term="vscode" /><summary type="html"><![CDATA[TODO]]></summary></entry></feed>
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">package</span> <span class="n">greetings</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">func</span> <span class="n">Hello</span><span class="p">(</span><span class="n">name</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+	<span class="n">message</span> <span class="o">:=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"Hi, %v. Welcome!"</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">message</span>
+<span class="p">}</span>
+
+<span class="err">#</span><span class="o">=&gt;</span> <span class="n">prints</span> <span class="err">'</span><span class="n">Hi</span><span class="p">,</span> <span class="n">NAME</span><span class="o">.</span> <span class="n">Welcome</span><span class="o">!</span><span class="err">'</span> <span class="n">to</span> <span class="n">STDOUT</span><span class="o">.</span></code></pre></figure>
+
+<p>greetings_test.go</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">package</span> <span class="n">greetings</span>
+
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"testing"</span>
+	<span class="s">"github.com/stretchr/testify/assert"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">TestGreeting</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span><span class="n">testing</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">message</span> <span class="o">:=</span> <span class="n">Hello</span><span class="p">(</span><span class="s">"Kayla"</span><span class="p">)</span>
+	<span class="n">expected_message</span> <span class="o">:=</span> <span class="s">"Hi, Kayla. Welcome!"</span>
+	
+  <span class="n">assert</span><span class="o">.</span><span class="n">Equal</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">expected_message</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">}</span></code></pre></figure>]]></content><author><name>Kayla R. Webb</name></author><category term="debugging" /><category term="golang" /><category term="vscode" /><summary type="html"><![CDATA[I’ve recently started writing services in Golang. Using the VSCode debugger has helped me learned (saved me a lot of time!). Lets quickly run through how to set it up.]]></summary></entry></feed>

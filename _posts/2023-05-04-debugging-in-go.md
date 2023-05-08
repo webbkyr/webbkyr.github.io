@@ -1,34 +1,71 @@
 ---
 layout: post
-title:  Debugging in Go
+title:  Quick Tip - Debugging Go in VSCode
 date:  2023-05-06
 permalink: debugging-in-go
 tags: debugging golang vscode
 
 ---
 
-TODO
+I've recently started writing services in Golang. Using the VSCode debugger has helped me learned (saved me a lot of time!). Lets quickly run through how to set it up.
 
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+Under the `Run And Debug` tab in VSCode, click `create a launch.json file`.
 
-Jekyll requires blog post files to be named according to the following format:
+In this file is where we'll add configuration for our Go program. This is an example configuration for a simple program called `greetings`. The folder structure looks like this:
 
-`YEAR-MONTH-DAY-title.MARKUP`
+```
+/greetings
+  go.mod
+  go.sum
+  greetings_test.go
+  greetings.go
+  .env.development
+  
+```
+And the `launch.json`:
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
-
-Jekyll also offers powerful support for code snippets:
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
+{% highlight json %}
+{
+  "version": "0.2.0"
+  "configurations": [
+    "type": "go"
+    "request": "launch",
+    "name": "Greetings program" // this can be whatever you want
+    "program": "${workspaceFolder}/",
+    "envFile": "${workspaceFolder}/.env.development" // this is optional
+  ]
+}
 {% endhighlight %}
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+And that's it! To test it out, set a breakpoint and run your tests(s)
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+greetings.go
+{% highlight go %}
+package greetings
+
+import "fmt"
+
+func Hello(name string) string {
+	message := fmt.Sprintf("Hi, %v. Welcome!", name)
+	return message
+}
+
+#=> prints 'Hi, NAME. Welcome!' to STDOUT.
+{% endhighlight %}
+
+greetings_test.go
+{% highlight go %}
+package greetings
+
+import (
+	"testing"
+	"github.com/stretchr/testify/assert"
+)
+
+func TestGreeting(t *testing.T) {
+	message := Hello("Kayla")
+	expected_message := "Hi, Kayla. Welcome!"
+	
+  assert.Equal(t, expected_message, message)
+}
+{% endhighlight %}
