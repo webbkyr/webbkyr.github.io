@@ -7,7 +7,7 @@ tags: debugging golang vscode
 
 ---
 
-I've recently started writing services in Golang. Using the VSCode debugger has helped me learned (saved me a lot of time!). Lets quickly run through how to set it up.
+I've recently started writing services in Golang. Using the VSCode debugger has helped me learn (and save me a lot of time!). Lets quickly run through how to set it up.
 
 Under the `Run And Debug` tab in VSCode, click `create a launch.json file`.
 
@@ -37,7 +37,7 @@ And the `launch.json`:
 }
 {% endhighlight %}
 
-And that's it! To test it out, set a breakpoint and run your tests(s)
+And that's it! To test it out, set a breakpoint and run your tests(s). Here's the code for the module and its unit test.
 
 greetings.go
 {% highlight go %}
