@@ -50,7 +50,7 @@ func Hello(name string) string {
 	return message
 }
 
-#=> prints 'Hi, NAME. Welcome!' to STDOUT.
+#=> returns 'Hi, NAME. Welcome!'
 {% endhighlight %}
 
 greetings_test.go
