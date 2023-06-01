@@ -17,4 +17,4 @@ Day-to-day, I build reliable data pipelines, secure APIs and other backend servi
 
 💻 Attended a full time coding bootcamp. I picked up SQL on the job as a data analyst, but I learned all things web development (from scratch!) at the bootcamp. 
 
-🏋🏾‍♀️ I LOVE weightlifting (and CrossFit!). I live a double life as a competitive athlete and an engineer. Personal bests include a 200lb clean, 165lb snatch, 245lb back squat and 310lb deadlift.
+🏋🏾‍♀️ I LOVE weightlifting (and CrossFit!). I live a double life as a competitive athlete and an engineer. Personal bests include a 190lb clean & jerk, 170lb snatch, 245lb back squat and 310lb deadlift.
